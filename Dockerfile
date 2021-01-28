@@ -1,10 +1,5 @@
 FROM continuumio/miniconda3:4.8.2
 
-# Set up directories
-WORKDIR /app
-COPY . /app
-RUN mkdir /opt/notebooks/
-
 # Install system packages
 RUN apt-get update && apt-get -y install \
     build-essential cron lcov openssh-server postgresql-client redis valgrind vim --no-install-recommends && \
