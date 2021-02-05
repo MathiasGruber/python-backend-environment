@@ -9,6 +9,9 @@ RUN apt-get update && apt-get -y install \
 # Install conda modules and do clean up
 RUN conda install jupyter==1.0.0 python-graphviz==0.14 && conda clean -afy
 
+# Install RDKit
+RUN conda install -c conda-forge rdkit=2020.09.1 && conda clean -afy
+
 # Install SSH server to be able to login on app service
 # See: https://docs.microsoft.com/en-us/azure/app-service/configure-custom-container#enable-ssh
 RUN echo "root:Docker!" | chpasswd
