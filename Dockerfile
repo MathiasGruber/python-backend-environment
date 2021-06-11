@@ -1,4 +1,4 @@
-FROM continuumio/miniconda3:4.8.2
+FROM condaforge/miniforge3:4.10.1-0
 
 # Install system packages
 RUN apt-get update && apt-get -y install \
