@@ -2,7 +2,7 @@ FROM condaforge/miniforge3:4.10.1-0
 
 # Install system packages
 RUN apt-get update && apt-get -y install \
-    build-essential cron lcov openssh-server postgresql-client redis valgrind vim --no-install-recommends && \
+    build-essential cron lcov openssh-server postgresql-client redis valgrind vim libgl1-mesa-dev --no-install-recommends && \
     # Clean up
     apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/* /tmp/library-scripts/
 
