@@ -6,6 +6,9 @@ RUN apt-get update && apt-get -y install \
     # Clean up
     apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/* /tmp/library-scripts/
 
+# Force python 3.8
+RUN conda install python=3.8 && conda clean -afy
+
 # Install conda modules and do clean up
 RUN conda install jupyter==1.0.0 python-graphviz==0.14 && conda clean -afy
 
