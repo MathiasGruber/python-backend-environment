@@ -10,14 +10,10 @@ RUN apt-get update && apt-get -y install \
 RUN conda install python=3.8 && conda clean -afy
 
 # Install conda modules and do clean up
-<<<<<<< HEAD
 RUN conda install jupyter==1.0.0 python-graphviz==0.14 nodejs==15.14.0 && conda clean -afy
-=======
-RUN conda install jupyter==1.0.0 python-graphviz==0.14 line-profiler==3.3.0 && conda clean -afy
->>>>>>> Add line profiler
 
 # Install line-profiler
-RUN conda install -c conda-forge line_profiler && conda clean -afy
+RUN conda install -c conda-forge rdkit=2020.09.1 line_profiler && conda clean -afy
 
 # Install datadog
 COPY install_dd.sh install_dd.sh
