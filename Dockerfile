@@ -15,6 +15,11 @@ RUN conda install jupyter==1.0.0 python-graphviz==0.14 nodejs==15.14.0 && conda 
 # Install line-profiler
 RUN conda install -c conda-forge line_profiler && conda clean -afy
 
+# Install datadog
+COPY install_dd.sh install_dd.sh
+RUN chmod u+x install_dd.sh && DD_API_KEY=placeholder DD_AGENT_MAJOR_VERSION=7 ./install_dd.sh
+RUN rm -rf /etc/datadog-agent/datadog.yaml
+
 # Install SSH server to be able to login on app service
 # See: https://docs.microsoft.com/en-us/azure/app-service/configure-custom-container#enable-ssh
 RUN echo "root:Docker!" | chpasswd
