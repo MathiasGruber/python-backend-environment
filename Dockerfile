@@ -12,8 +12,11 @@ RUN conda install python=3.8 && conda clean -afy
 # Install conda modules and do clean up
 RUN conda install jupyter==1.0.0 python-graphviz==0.14 nodejs==15.14.0 && conda clean -afy
 
-# Install line-profiler
+# Install rdkit
 RUN conda install -c conda-forge rdkit=2020.09.1 line_profiler && conda clean -afy
+
+# Install pymol
+RUN conda install -c conda-forge -c schrodinger pymol-bundle && conda clean -afy
 
 # Install datadog
 COPY install_dd.sh install_dd.sh
