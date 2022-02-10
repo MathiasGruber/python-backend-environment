@@ -18,10 +18,18 @@ RUN conda install -c conda-forge rdkit=2020.09.1 line_profiler && conda clean -a
 # Install pymol
 RUN conda install -c conda-forge -c schrodinger pymol-bundle && conda clean -afy
 
+# Install ObenBabel
+RUN conda install -c conda-forge openbabel && conda clean -afy
+
 # Install datadog
 COPY install_dd.sh install_dd.sh
 RUN chmod u+x install_dd.sh && DD_API_KEY=placeholder DD_AGENT_MAJOR_VERSION=7 ./install_dd.sh
 RUN rm -rf /etc/datadog-agent/datadog.yaml
+
+# Install PDB fixer
+RUN conda install -c conda-forge openmm==7.5.0 && conda clean -afy
+#RUN git clone https://github.com/openmm/pdbfixer.git && cd pdbfixer && python setup.py install && cd .. && rm -rf pdbfixer
+#RUN pdbfixer
 
 # Install SSH server to be able to login on app service
 # See: https://docs.microsoft.com/en-us/azure/app-service/configure-custom-container#enable-ssh
