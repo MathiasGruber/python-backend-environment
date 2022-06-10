@@ -1,4 +1,4 @@
-FROM condaforge/miniforge3:4.10.1-0
+FROM condaforge/miniforge3:4.12.0-2
 
 # Install system packages
 RUN apt-get update && apt-get -y install \
