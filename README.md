@@ -19,6 +19,12 @@ FROM nanomathias/python-backend-environment
 # Build locally
 
 ```bash
-# Build docker image
-docker build --tag python-backend-environment .
+# Setup docker builder
+docker buildx create --name mybuilder --driver-opt network=host --use
+
+# Build docker image (multi-arch version)
+docker buildx build \
+    --push \
+    --tag nanomathias/python-backend-environment:release-1.0.9 \
+    --platform linux/amd64,linux/arm64 .
 ```
