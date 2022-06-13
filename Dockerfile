@@ -6,11 +6,11 @@ RUN apt-get update && apt-get -y install \
     # Clean up
     apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/* /tmp/library-scripts/
 
-# Force python 3.8
-RUN conda install python=3.8 && conda clean -afy
+# Force python 3.10
+RUN conda install python=3.10 && conda clean -afy
 
 # Install conda modules and do clean up
-RUN conda install jupyter==1.0.0 python-graphviz==0.14 nodejs==15.14.0 && conda clean -afy
+RUN conda install jupyter==1.0.0 python-graphviz==0.20 nodejs==17.9.0 && conda clean -afy
 
 # Install line-profiler
 RUN conda install -c conda-forge line_profiler && conda clean -afy
